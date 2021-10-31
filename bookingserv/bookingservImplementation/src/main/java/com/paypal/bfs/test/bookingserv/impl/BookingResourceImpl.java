@@ -29,6 +29,9 @@ public class BookingResourceImpl implements BookingResource {
 	@Autowired
 	PayloadValidator validator;
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public ResponseEntity<Booking> create(Booking booking) throws JsonMappingException {
 
@@ -51,12 +54,18 @@ public class BookingResourceImpl implements BookingResource {
 		return ResponseEntity.status(201).body(savedBooking);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public ResponseEntity<List<Booking>> getAllBooking() {
 		List<Booking> savedBookings = bookingService.getAllBooking();
 		return ResponseEntity.status(200).body(savedBookings);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public ResponseEntity<Booking> getBookingById(Integer id) {
 		Booking savedBooking = bookingService.getBookingById(id);
@@ -65,11 +74,20 @@ public class BookingResourceImpl implements BookingResource {
 
 	@SuppressWarnings("rawtypes")
 	@ExceptionHandler(ValidationException.class)
-	public ResponseEntity rulesForCustomerNotFound(HttpServletRequest req, Exception e) {
+	public ResponseEntity handleValidationException(HttpServletRequest req, Exception e) {
 		return ResponseEntity.status(400).body(((ValidationException) e).getErrorMessage());
 
 	}
 
+	@SuppressWarnings("rawtypes")
+	@ExceptionHandler(Exception.class)
+	public ResponseEntity handleAllException(HttpServletRequest req, Exception e) {
+		return ResponseEntity.status(500).body(e.getMessage());
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void deleteBooking(Integer id) {

@@ -40,7 +40,7 @@ public interface BookingResource {
 	ResponseEntity<Booking> getBookingById(@PathVariable Integer id);
 
 	/**
-	 * Get a booking {@link Booking} resource
+	 * Delete a given booking {@link Booking} resource
 	 *
 	 * @param id - Id of the booking object
 	 * @return the matching booking
