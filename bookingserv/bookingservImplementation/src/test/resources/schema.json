@@ -1,0 +1,98 @@
+{
+	"type": "object",
+	"$schema": "http://json-schema.org/draft-07/schema#",
+	"description": "Booking resource object",
+	"title": "Booking",
+	"required": [
+		"first_name",
+		"id",
+		"last_Name"
+	],
+	"properties": {
+		"id": {
+			"description": "Booking id",
+			"type": "integer"
+		},
+		"first_name": {
+			"description": "First name",
+			"type": "string",
+			"minLength": 1,
+			"maxLength": 255
+		},
+		"last_name": {
+			"description": "Last name",
+			"type": "string",
+			"minLength": 1,
+			"maxLength": 255
+		},
+		"data_of_birth": {
+			"description": "Data of Birth",
+			"type": "string",
+			"format": "date"
+		},
+		"check_in": {
+			"description": "Check in Data time",
+			"type": "string",
+			"format": "date-time"
+		},
+		"check_out": {
+			"description": "Check out Data time",
+			"type": "string",
+			"format": "date-time"
+		},
+		"total_price": {
+			"description": "Total Price",
+			"type": "number",
+			"multipleOf": "0.01"
+		},
+		"deposit": {
+			"description": "Deposit ",
+			"type": "number",
+			"multipleOf": "0.01"
+		},
+		"address": {
+			"type": "object",
+			"$schema": "http://json-schema.org/draft-07/schema#",
+			"description": "Address for Booking scehma",
+			"title": "Address",
+			"required": [
+				"line1",
+				"city",
+				"state",
+				"zip_code"
+			],
+			"properties": {
+				"line1": {
+					"description": "Address line1",
+					"type": "string",
+					"minLength": 1,
+					"maxLength": 255
+				},
+				"line2": {
+					"description": "Address line2",
+					"type": "string",
+					"minLength": 1,
+					"maxLength": 255
+				},
+				"city": {
+					"description": "City",
+					"type": "string",
+					"minLength": 1,
+					"maxLength": 255
+				},
+				"state": {
+					"description": "State",
+					"type": "string",
+					"minLength": 1,
+					"maxLength": 255
+				},
+				"zip_code": {
+					"description": "Zip Code",
+					"type": "string",
+					"minLength": 5,
+					"maxLength": 10
+				}
+			}
+		}
+	}
+}
